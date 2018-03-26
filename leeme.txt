@@ -1,6 +1,9 @@
 git clone https://github.com/laacademia/paw2018.git
 git remote add upstream https://github.com/laacademia/paw2018.git
 
+	#commit y subida a github (ver add status)
+		git commit -m "comentario de lo que hice"
+		git push -u origin master
 
 Estructura
 

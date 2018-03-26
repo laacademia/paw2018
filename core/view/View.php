@@ -10,6 +10,7 @@ class View
 
 	*/
 	private $_layout; 
+    private $_title;
 
 	function render($view, $params = [], $context = null){
 		$view_path = $this->findViewFile($view, $context);		
@@ -49,6 +50,14 @@ class View
     function getLayout(){
     	return $this->_layout;
     }
+    function setTitle($title){
+        $this->_title = $title;
+    }
+    function getTitle(){
+        return $this->_title;
+    }
+
+
 }
 
  ?>
