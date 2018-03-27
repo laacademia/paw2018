@@ -32,15 +32,16 @@ class Controller
 
 	function render($view, $params){
 		$content = $this->getView()->render($view, $params, $this);		//se trae el contenido de la vista
-        return $this->renderContent($content);							//dibuja la vista con el layout si se especifico
+        return $this->renderContent($content,$params);							//dibuja la vista con el layout si se especifico
 	}
 
-	public function renderContent($content)
+	public function renderContent($content,$params)
     {
         //$layoutFile = $this->findLayoutFile($this->getView());
         if($this->useLayout){
-        	$layoutFile = $this->getLayout();	        
-			return $this->getView()->renderFile($layoutFile, ['content' => $content], $this);	               	        
+        	$layoutFile = $this->getLayout();
+        	$params['content'] = $content;
+			return $this->getView()->renderFile($layoutFile, $params);	               	        
         }else{
         	return $content;
         }

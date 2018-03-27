@@ -26,7 +26,7 @@ class Application
 		$name_controller = $this->url_params['c'];
 		$action = $this->url_params['a'];
 		$params = $this->url_params['params'];
-		$params = 'asd2';	
+		//$params = array('title'=>'titulo');
 		$controller = $this->findController($name_controller);		
 		echo $controller->runAction($action,$params);
 	}

@@ -8,7 +8,7 @@ use core;
 */
 class ProductosController extends  \core\Controller
 {	
-	function actionInicio($params){
+	function actionInicio($params){		
 		return $this->render('inicio',$params);	//llama a la view inicio
 	}
 
@@ -17,6 +17,7 @@ class ProductosController extends  \core\Controller
 	}
 
 	function actionTest($params){
+		$params['title'] = 'Este es mi titulo';
 		return $this->render('test',$params);	//llama a la view test	
 	}
 }

@@ -13,8 +13,9 @@ class View
     private $_title;
 
 	function render($view, $params = [], $context = null){
-		$view_path = $this->findViewFile($view, $context);		
-		return $this->renderFile($view_path, $params, $context);
+        print_r($params);
+		$view_path = $this->findViewFile($view, $context);		        
+		return $this->renderFile($view_path, $params);
 	}
 
 	protected function findViewFile($view, $context = null){
@@ -26,19 +27,20 @@ class View
 			die('No se encontro la vista :'.$view_path);
 	}
 
-	public function renderFile($viewFile, $params = [], $context = null)
+	public function renderFile($viewFile, $params = [])
     {               
-        $output = $this->renderPhpFile($viewFile, $params);
-
-        /*$context->setView();*/
-        //COMO LE PASO EL LAYOUT LPM
-        return $output;
+        ob_start();
+        
+        ob_implicit_flush(false);        
+        extract($params, EXTR_OVERWRITE);
+        require($viewFile);
+        return ob_get_clean();
     }
 
 	public function renderPhpFile($_file_, $_params_ = [])
     {
         ob_start();
-        ob_implicit_flush(false);
+        ob_implicit_flush(false);        
         extract($_params_, EXTR_OVERWRITE);
         require($_file_);
         return ob_get_clean();
